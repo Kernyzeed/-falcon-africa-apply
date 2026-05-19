@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Falcon Africa — Onboarding Email</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #e8e4dc;
+    font-family: 'DM Sans', Georgia, sans-serif;
+    padding: 2rem 1rem;
+    min-height: 100vh;
+  }
+
+  /* EMAIL PREVIEW SHELL */
+  .email-shell {
+    max-width: 620px;
+    margin: 0 auto;
+    background: #f5f2ec;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+  }
+
+  /* TOP BAR */
+  .topbar {
+    background: #0d0d0d;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .topbar-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 0.95rem;
+    color: #f5f2ec;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .logo-dot {
+    width: 7px; height: 7px;
+    background: #c8401a;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .topbar-tag {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(245,242,236,0.5);
+  }
+
+  /* HERO BAND */
+  .hero-band {
+    background: #c8401a;
+    padding: 2.5rem 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-band::before {
+    content: 'FALCON';
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 5rem;
+    color: rgba(255,255,255,0.08);
+    letter-spacing: -0.04em;
+    pointer-events: none;
+    line-height: 1;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 0.6rem;
+  }
+
+  .hero-band h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.9rem;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-band p {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.6;
+    font-weight: 300;
+    max-width: 380px;
+  }
+
+  /* BODY */
+  .email-body {
+    padding: 2rem 2.5rem;
+  }
+
+  .greeting {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: #0d0d0d;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+  }
+
+  .greeting strong {
+    font-weight: 500;
+  }
+
+  /* WHAT'S NEXT SECTION */
+  .section-label {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #c8401a;
+    margin-bottom: 0.75rem;
+  }
+
+  .steps-list {
+    border: 1px solid #d4cfc7;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 1.75rem;
+    background: #fff;
+  }
+
+  .step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid #ece9e3;
+  }
+
+  .step-item:last-child { border-bottom: none; }
+
+  .step-num {
+    width: 28px; height: 28px;
+    background: #0d0d0d;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.72rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .step-content { flex: 1; }
+
+  .step-title {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: #0d0d0d;
+    margin-bottom: 0.2rem;
+  }
+
+  .step-desc {
+    font-size: 0.8rem;
+    color: #7a7570;
+    line-height: 1.55;
+  }
+
+  /* CTA BLOCK */
+  .cta-block {
+    background: #0d0d0d;
+    border-radius: 12px;
+    padding: 1.75rem 2rem;
+    margin-bottom: 1.75rem;
+    text-align: center;
+  }
+
+  .cta-block h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #f5f2ec;
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.02em;
+  }
+
+  .cta-block p {
+    font-size: 0.8rem;
+    color: rgba(245,242,236,0.6);
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: #c8401a;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    padding: 0.85rem 2rem;
+    border-radius: 8px;
+    text-transform: uppercase;
+  }
+
+  .cta-link-text {
+    display: block;
+    margin-top: 0.75rem;
+    font-size: 0.7rem;
+    color: rgba(245,242,236,0.4);
+    word-break: break-all;
+  }
+
+  .cta-link-text a {
+    color: rgba(245,242,236,0.5);
+    text-decoration: underline;
+  }
+
+  /* AI BADGE */
+  .ai-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #fff;
+    border: 1px solid #d4cfc7;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .ai-icon {
+    width: 36px; height: 36px;
+    background: #f0ede8;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .ai-badge-text h4 {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #0d0d0d;
+    margin-bottom: 0.15rem;
+  }
+
+  .ai-badge-text p {
+    font-size: 0.75rem;
+    color: #7a7570;
+    line-height: 1.5;
+  }
+
+  /* WHAT WE OFFER */
+  .perks-row {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .perk-card {
+    flex: 1;
+    background: #fff;
+    border: 1px solid #d4cfc7;
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .perk-icon {
+    font-size: 1.4rem;
+    margin-bottom: 0.4rem;
+    display: block;
+  }
+
+  .perk-title {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #0d0d0d;
+    margin-bottom: 0.2rem;
+  }
+
+  .perk-desc {
+    font-size: 0.72rem;
+    color: #7a7570;
+    line-height: 1.5;
+  }
+
+  /* DEADLINE PILL */
+  .deadline-bar {
+    background: #fef3e2;
+    border: 1px solid #f5d98a;
+    border-radius: 8px;
+    padding: 0.85rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .deadline-icon { font-size: 1.1rem; flex-shrink: 0; }
+
+  .deadline-text {
+    font-size: 0.8rem;
+    color: #7a5500;
+    line-height: 1.5;
+  }
+
+  .deadline-text strong { font-weight: 500; }
+
+  /* DIVIDER */
+  .divider {
+    border: none;
+    border-top: 1px solid #d4cfc7;
+    margin: 1.5rem 0;
+  }
+
+  /* SIGN OFF */
+  .signoff {
+    font-size: 0.88rem;
+    line-height: 1.75;
+    color: #0d0d0d;
+    font-weight: 300;
+  }
+
+  .signoff strong { font-weight: 500; }
+
+  .signoff-name {
+    margin-top: 1rem;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #0d0d0d;
+  }
+
+  .signoff-title {
+    font-size: 0.75rem;
+    color: #7a7570;
+    margin-top: 0.15rem;
+  }
+
+  /* FOOTER */
+  .email-footer {
+    background: #0d0d0d;
+    padding: 1.25rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .footer-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    color: rgba(245,242,236,0.5);
+    letter-spacing: 0.04em;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.25rem;
+  }
+
+  .footer-links a {
+    font-size: 0.7rem;
+    color: rgba(245,242,236,0.4);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+  }
+
+  /* PREVIEW LABEL */
+  .preview-label {
+    text-align: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #7a7570;
+    margin-bottom: 1rem;
+  }
+</style>
+</head>
+<body>
+
+<p class="preview-label">Email preview — Falcon Africa Onboarding</p>
+
+<div class="email-shell">
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar-logo">
+      <span class="logo-dot"></span>
+      Falcon Africa
+    </div>
+    <span class="topbar-tag">Volunteer & Intern Program 2026</span>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero-band">
+    <p class="hero-eyebrow">You're in — almost</p>
+    <h1>We received<br>your interest.</h1>
+    <p>Now complete your official application so we can place you on the right team.</p>
+  </div>
+
+  <!-- BODY -->
+  <div class="email-body">
+
+    <p class="greeting">
+      Hi <strong>[First Name]</strong>,<br><br>
+      Thank you for reaching out to Falcon Africa. We've received hundreds of applications and we're genuinely excited by the talent pool — including yours.<br><br>
+      To move forward, we need you to complete our <strong>official application form</strong>. It takes less than 3 minutes, and our AI will instantly review your profile and confirm your best-fit role.
+    </p>
+
+    <!-- DEADLINE -->
+    <div class="deadline-bar">
+      <span class="deadline-icon">⏳</span>
+      <p class="deadline-text"><strong>Applications close in 7 days.</strong> Complete yours before slots fill up for your role.</p>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-block">
+      <h2>Complete your application</h2>
+      <p>Takes 3 minutes · AI-powered role match · Instant feedback</p>
+      <a href="https://kernyzeed.github.io/falcon-africa-apply" class="cta-btn">Apply Now →</a>
+      <span class="cta-link-text">
+        Or copy this link: <a href="https://kernyzeed.github.io/falcon-africa-apply">https://kernyzeed.github.io/falcon-africa-apply</a>
+      </span>
+    </div>
+
+    <!-- AI BADGE -->
+    <div class="ai-badge">
+      <div class="ai-icon">✦</div>
+      <div class="ai-badge-text">
+        <h4>Powered by AI assessment</h4>
+        <p>Our form uses AI to instantly review your skills and tell you how strong your fit is for your chosen role — before a human even sees it.</p>
+      </div>
+    </div>
+
+    <!-- WHAT'S NEXT -->
+    <p class="section-label">What happens after you apply</p>
+    <div class="steps-list">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-title">Complete the form</div>
+          <div class="step-desc">Fill in your details, skills, and motivation. The AI will assess your fit immediately.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-title">Shortlisting (within 7 days)</div>
+          <div class="step-desc">Our team reviews all applications. Shortlisted candidates receive a role-specific task.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-title">Task submission (5-day window)</div>
+          <div class="step-desc">A short, practical assignment relevant to your role. No interviews — just your work.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <div class="step-title">Final offer (within 2 weeks)</div>
+          <div class="step-desc">Selected candidates are onboarded to their team with a clear brief, lead, and deliverables.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WHAT WE OFFER -->
+    <p class="section-label">What you get</p>
+    <div class="perks-row">
+      <div class="perk-card">
+        <span class="perk-icon">🏆</span>
+        <div class="perk-title">Certificate</div>
+        <div class="perk-desc">Official Falcon Africa certificate upon completion</div>
+      </div>
+      <div class="perk-card">
+        <span class="perk-icon">🚀</span>
+        <div class="perk-title">Real projects</div>
+        <div class="perk-desc">Work on live client campaigns, not mock exercises</div>
+      </div>
+      <div class="perk-card">
+        <span class="perk-icon">🌍</span>
+        <div class="perk-title">Network</div>
+        <div class="perk-desc">Connect with Africa's next generation of marketers</div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <p class="signoff">
+      If you have any questions before applying, simply reply to this email.<br><br>
+      We look forward to reading your application.
+    </p>
+
+    <div class="signoff-name">The Falcon Africa Team</div>
+    <div class="signoff-title">admin@thefalconafrica.com</div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="email-footer">
+    <span class="footer-logo">© 2026 Falcon Africa</span>
+    <div class="footer-links">
+      <a href="#">Website</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Unsubscribe</a>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
